@@ -17,6 +17,9 @@
         "existingServicePrincipalClientSecret": {
             "value": "GEN-AZUREAD-AKS-APPID-SECRET"
         },
+        "nodeResourceGroup": {
+            "value": "GEN-UNIQUE"
+        },
         "existingVirtualNetworkName": {
             "value": "GET-PREREQ-vnetName"
         },

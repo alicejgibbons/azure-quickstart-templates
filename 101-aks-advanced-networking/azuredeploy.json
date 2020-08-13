@@ -75,7 +75,7 @@
             }
         },
         "kubernetesVersion": {
-            "defaultValue": "1.15.7",
+            "defaultValue": "1.16.9",
             "type": "string",
             "metadata": {
                 "description": "The version of Kubernetes."
@@ -111,6 +111,13 @@
             "type": "bool",
             "metadata": {
                 "description": "boolean flag to turn on and off of RBAC"
+            }
+        },
+        "nodeResourceGroup": {
+            "defaultValue": "AKS-node-RG",
+            "type": "string",
+            "metadata": {
+                "description": "Name of resource group that contains the AKS managed resources."
             }
         },
         "existingVirtualNetworkName": {
@@ -160,7 +167,7 @@
         {
             "type": "Microsoft.ContainerService/managedClusters",
             "name": "[parameters('resourceName')]",
-            "apiVersion": "2020-02-01",
+            "apiVersion": "2020-06-01",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "ClusterSubnetRoleAssignmentDeployment"
@@ -168,6 +175,7 @@
             "properties": {
                 "kubernetesVersion": "[parameters('kubernetesVersion')]",
                 "enableRBAC": "[parameters('enableRBAC')]",
+                "nodeResourceGroup":"[parameters('nodeResourceGroup')]",
                 "dnsPrefix": "[parameters('dnsPrefix')]",
                 "addonProfiles": {
                     "httpApplicationRouting": {
